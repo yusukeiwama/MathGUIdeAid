@@ -22,6 +22,8 @@
 		4316353D180538C200A23B8A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4316351C180538C100A23B8A /* UIKit.framework */; };
 		43163545180538C200A23B8A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43163543180538C200A23B8A /* InfoPlist.strings */; };
 		43163547180538C200A23B8A /* MathGUIdeAidTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 43163546180538C200A23B8A /* MathGUIdeAidTests.m */; };
+		43308FDF1806B790000DDEF9 /* UTBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43308FDE1806B790000DDEF9 /* UTBoxView.m */; };
+		43308FE11806C8A5000DDEF9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43308FE01806C8A5000DDEF9 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,9 @@
 		43163542180538C200A23B8A /* MathGUIdeAidTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MathGUIdeAidTests-Info.plist"; sourceTree = "<group>"; };
 		43163544180538C200A23B8A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		43163546180538C200A23B8A /* MathGUIdeAidTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MathGUIdeAidTests.m; sourceTree = "<group>"; };
+		43308FDD1806B790000DDEF9 /* UTBoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UTBoxView.h; sourceTree = "<group>"; };
+		43308FDE1806B790000DDEF9 /* UTBoxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UTBoxView.m; sourceTree = "<group>"; };
+		43308FE01806C8A5000DDEF9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43308FE11806C8A5000DDEF9 /* QuartzCore.framework in Frameworks */,
 				4316351B180538C100A23B8A /* CoreGraphics.framework in Frameworks */,
 				4316351D180538C100A23B8A /* UIKit.framework in Frameworks */,
 				43163519180538C100A23B8A /* Foundation.framework in Frameworks */,
@@ -103,6 +109,7 @@
 		43163517180538C100A23B8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				43308FE01806C8A5000DDEF9 /* QuartzCore.framework */,
 				43163518180538C100A23B8A /* Foundation.framework */,
 				4316351A180538C100A23B8A /* CoreGraphics.framework */,
 				4316351C180538C100A23B8A /* UIKit.framework */,
@@ -120,6 +127,8 @@
 				4316352D180538C100A23B8A /* Main_iPad.storyboard */,
 				43163530180538C100A23B8A /* UTViewController.h */,
 				43163531180538C100A23B8A /* UTViewController.m */,
+				43308FDD1806B790000DDEF9 /* UTBoxView.h */,
+				43308FDE1806B790000DDEF9 /* UTBoxView.m */,
 				43163533180538C100A23B8A /* Images.xcassets */,
 				4316351F180538C100A23B8A /* Supporting Files */,
 			);
@@ -257,6 +266,7 @@
 				43163525180538C100A23B8A /* main.m in Sources */,
 				43163532180538C100A23B8A /* UTViewController.m in Sources */,
 				43163529180538C100A23B8A /* UTAppDelegate.m in Sources */,
+				43308FDF1806B790000DDEF9 /* UTBoxView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +485,7 @@
 				4316354C180538C200A23B8A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4316354D180538C200A23B8A /* Build configuration list for PBXNativeTarget "MathGUIdeAidTests" */ = {
 			isa = XCConfigurationList;
@@ -483,6 +494,7 @@
 				4316354F180538C200A23B8A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

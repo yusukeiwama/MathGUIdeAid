@@ -7,17 +7,25 @@
 //
 
 #import "UTViewController.h"
+#import "UTBoxView.h"
 
 @interface UTViewController ()
 
 @end
 
-@implementation UTViewController
+@implementation UTViewController {
+	UTBoxView *boxView;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+	
+	boxView = [[UTBoxView alloc] initWithFrame:CGRectMake(300, 300, 100, 100)];
+	[self.view addSubview:boxView];
+	boxView.backgroundColor = [UIColor redColor];
+	
 }
 
 - (void)didReceiveMemoryWarning
