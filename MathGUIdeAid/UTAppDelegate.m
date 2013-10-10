@@ -7,6 +7,7 @@
 //
 
 #import "UTAppDelegate.h"
+#import "UTMathContext.h"
 
 @implementation UTAppDelegate
 

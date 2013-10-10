@@ -24,6 +24,8 @@
 		43163547180538C200A23B8A /* MathGUIdeAidTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 43163546180538C200A23B8A /* MathGUIdeAidTests.m */; };
 		43308FDF1806B790000DDEF9 /* UTBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43308FDE1806B790000DDEF9 /* UTBoxView.m */; };
 		43308FE11806C8A5000DDEF9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43308FE01806C8A5000DDEF9 /* QuartzCore.framework */; };
+		43308FE41806DC5D000DDEF9 /* UTMathContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 43308FE31806DC5D000DDEF9 /* UTMathContext.m */; };
+		43308FE81806DE32000DDEF9 /* UTMathStateDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 43308FE71806DE32000DDEF9 /* UTMathStateDefault.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,10 @@
 		43308FDD1806B790000DDEF9 /* UTBoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UTBoxView.h; sourceTree = "<group>"; };
 		43308FDE1806B790000DDEF9 /* UTBoxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UTBoxView.m; sourceTree = "<group>"; };
 		43308FE01806C8A5000DDEF9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		43308FE21806DC5D000DDEF9 /* UTMathContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UTMathContext.h; sourceTree = "<group>"; };
+		43308FE31806DC5D000DDEF9 /* UTMathContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UTMathContext.m; sourceTree = "<group>"; };
+		43308FE61806DE32000DDEF9 /* UTMathStateDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UTMathStateDefault.h; sourceTree = "<group>"; };
+		43308FE71806DE32000DDEF9 /* UTMathStateDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UTMathStateDefault.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +135,7 @@
 				43163531180538C100A23B8A /* UTViewController.m */,
 				43308FDD1806B790000DDEF9 /* UTBoxView.h */,
 				43308FDE1806B790000DDEF9 /* UTBoxView.m */,
+				43308FE51806DC66000DDEF9 /* StateMachine */,
 				43163533180538C100A23B8A /* Images.xcassets */,
 				4316351F180538C100A23B8A /* Supporting Files */,
 			);
@@ -162,6 +169,17 @@
 				43163543180538C200A23B8A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		43308FE51806DC66000DDEF9 /* StateMachine */ = {
+			isa = PBXGroup;
+			children = (
+				43308FE21806DC5D000DDEF9 /* UTMathContext.h */,
+				43308FE31806DC5D000DDEF9 /* UTMathContext.m */,
+				43308FE61806DE32000DDEF9 /* UTMathStateDefault.h */,
+				43308FE71806DE32000DDEF9 /* UTMathStateDefault.m */,
+			);
+			name = StateMachine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +285,8 @@
 				43163532180538C100A23B8A /* UTViewController.m in Sources */,
 				43163529180538C100A23B8A /* UTAppDelegate.m in Sources */,
 				43308FDF1806B790000DDEF9 /* UTBoxView.m in Sources */,
+				43308FE81806DE32000DDEF9 /* UTMathStateDefault.m in Sources */,
+				43308FE41806DC5D000DDEF9 /* UTMathContext.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
