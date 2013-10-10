@@ -10,6 +10,7 @@
 
 @implementation UTBoxView {
 	NSMutableArray *boxes;
+	BOOL selectingCommand;
 }
 
 @synthesize x, y, w, h;
@@ -30,12 +31,9 @@
 		// Prepare boxes
 		boxes = [NSMutableArray array];
 		for (int i = 0; i < 8; i++) {
-			double theta = M_PI / 4.0 * i;
-			CGRect rect = CGRectMake(0,
-									 0,
-									 w, h);
+			CGRect rect = CGRectMake(0, 0, w, h);
 			UIView *aBoxView = [[UIView alloc] initWithFrame:rect];
-			aBoxView.backgroundColor = [UIColor colorWithRed:0.0 green:1.0 blue:1.0 alpha:0.9];
+			aBoxView.backgroundColor = [UIColor colorWithRed:0.4 green:0.8 blue:1.0 alpha:0.9];
 			aBoxView.hidden = YES;
 			aBoxView.layer.cornerRadius = w / 2.0;
 			[self addSubview:aBoxView];
@@ -96,18 +94,35 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	[UIView animateWithDuration:1.0 animations:^{
-		for (int i = 0; i < 8; i++) {
-			UIView *aBoxView = boxes[i];
-			double theta = M_PI / 4.0 * i;
-			CGRect rect = CGRectMake(1.5 * w * cos(theta),
-									 1.5 * w * sin(theta),
-									 w, h);
-			aBoxView.frame = rect;
-			aBoxView.hidden = NO;
-		}
+	if (selectingCommand) {
+		selectingCommand = NO;
+		[UIView animateWithDuration:1.0 animations:^{
+			for (int i = 0; i < 8; i++) {
+				UIView *aBoxView = boxes[i];
+				CGRect rect = CGRectMake(0, 0, w, h);
+				aBoxView.frame = rect;
+			}
+		} completion:^(BOOL finished){
+			for (int i = 0; i < 8; i++) {
+				UIView *aBoxView = boxes[i];
+				aBoxView.hidden = YES;
+			}
+		}];
 
-	}];
+	} else {
+		[UIView animateWithDuration:1.0 animations:^{
+			for (int i = 0; i < 8; i++) {
+				UIView *aBoxView = boxes[i];
+				double theta = M_PI / 4.0 * i;
+				CGRect rect = CGRectMake(1.5 * w * cos(theta),
+										 1.5 * w * sin(theta),
+										 w, h);
+				aBoxView.frame = rect;
+				aBoxView.hidden = NO;
+			}
+		}];
+		selectingCommand = YES;
+	}
 }
 
 /*

@@ -23,6 +23,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
 	
 	boxView = [[UTBoxView alloc] initWithFrame:CGRectMake(300, 300, 100, 100)];
+	boxView.center = self.view.center;
 	[self.view addSubview:boxView];
 	boxView.backgroundColor = [UIColor redColor];
 	
