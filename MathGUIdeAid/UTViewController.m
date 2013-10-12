@@ -22,10 +22,9 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 	
-	boxView = [[UTBoxView alloc] initWithFrame:CGRectMake(300, 300, 100, 100)];
-	boxView.center = self.view.center;
+	boxView = [[UTBoxView alloc] initWithFrame:CGRectMake(self.view.center.x, self.view.center.y, 100, 100) delegate:self];
 	[self.view addSubview:boxView];
-	boxView.backgroundColor = [UIColor redColor];
+//	boxView.backgroundColor = [UIColor redColor];
 	
 }
 
@@ -33,6 +32,13 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+// If touches don't hit any BoxView, then VC's touchesBegan:withEvent is called. Deselection goes here.
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	[boxView touchesBegan:touches withEvent:event];
 }
 
 @end

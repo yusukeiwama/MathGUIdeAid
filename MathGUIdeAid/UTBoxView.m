@@ -8,39 +8,89 @@
 
 #import "UTBoxView.h"
 
+#define BUTTON_COUNT 9
+#define DURATION 0.4
+
 @implementation UTBoxView {
-	NSMutableArray *boxes;
+	NSMutableArray *buttons;
 	BOOL selectingCommand;
 }
 
 @synthesize x, y, w, h;
+@synthesize label;
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame delegate:(id)delegate
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
 		srand((unsigned)time(NULL));
 		
+		self.layer.cornerRadius = w / 2.0;
+		self.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+		self.layer.borderWidth = 0.5;
+		
 		x = frame.origin.x;
 		y = frame.origin.y;
 		w = frame.size.width;
 		h = frame.size.height;
-		self.layer.cornerRadius = w / 2.0;
+		
+		label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, w, h)];
+		label.textAlignment = NSTextAlignmentCenter;
+		label.adjustsFontSizeToFitWidth = YES;
+		label.font = [UIFont fontWithName:@"Courier" size:48.0]; // Baskerville-SemiBoldItalic is also good
+		[self addSubview:label];
+		label.text = @"3x";
 		
 		// Prepare boxes
-		boxes = [NSMutableArray array];
-		for (int i = 0; i < 8; i++) {
-			CGRect rect = CGRectMake(0, 0, w, h);
-			UIView *aBoxView = [[UIView alloc] initWithFrame:rect];
-			aBoxView.backgroundColor = [UIColor colorWithRed:0.4 green:0.8 blue:1.0 alpha:0.9];
-			aBoxView.hidden = YES;
-			aBoxView.layer.cornerRadius = w / 2.0;
-			[self addSubview:aBoxView];
-			[boxes addObject:aBoxView];
+		buttons = [NSMutableArray array];
+		for (int i = 0; i < BUTTON_COUNT; i++) {
+			CGRect rect = CGRectMake(x, y, w, h);
+			UIButton *aButton = [UIButton buttonWithType:UIButtonTypeSystem];
+			aButton.frame = rect;
+			[aButton setTitle:[self buttonTitleWithIndex:i] forState:UIControlStateNormal];
+			[aButton addTarget:self action:[self buttonActionWithIndes:i] forControlEvents:UIControlEventTouchUpInside];
+			aButton.backgroundColor = [UIColor colorWithRed:0.4 green:0.8 blue:1.0 alpha:0.3];
+			aButton.layer.cornerRadius = w / 2.0;
+			aButton.showsTouchWhenHighlighted = YES;
+			aButton.hidden = YES;
+			[((UIViewController *)delegate).view addSubview:aButton];
+			[buttons addObject:aButton];
 		}
     }
     return self;
+}
+
+- (NSString *)buttonTitleWithIndex:(NSInteger)i
+{
+	switch (i) {
+		case 0: return @"next";
+		case 1: return @"index";
+		case 2: return @"denominator";
+		case 3: return @"attribute";
+		case 4: return @"previous";
+		case 5: return @"attribute";
+		case 6: return @"numerator";
+		case 7: return @"power";
+		case 8: return @"";
+		default: return @"error";
+	}
+}
+
+- (SEL)buttonActionWithIndes:(NSInteger)i
+{
+	switch (i) {
+		case 0: return @selector(touchesBegan:withEvent:);
+		case 1: return @selector(touchesBegan:withEvent:);
+		case 2: return @selector(denominator);
+		case 3: return @selector(touchesBegan:withEvent:);
+		case 4: return @selector(touchesBegan:withEvent:);
+		case 5: return @selector(touchesBegan:withEvent:);
+		case 6: return @selector(numerator);
+		case 7: return @selector(power);
+		case 8: return @selector(touchesBegan:withEvent:);
+		default: return nil;
+	}
 }
 
 - (CGFloat)x
@@ -96,34 +146,50 @@
 {
 	if (selectingCommand) {
 		selectingCommand = NO;
-		[UIView animateWithDuration:1.0 animations:^{
-			for (int i = 0; i < 8; i++) {
-				UIView *aBoxView = boxes[i];
-				CGRect rect = CGRectMake(0, 0, w, h);
+		[UIView animateWithDuration:DURATION animations:^{
+			for (int i = 0; i < BUTTON_COUNT; i++) {
+				UIView *aBoxView = buttons[i];
+				CGRect rect = CGRectMake(x, y, w, h);
 				aBoxView.frame = rect;
 			}
 		} completion:^(BOOL finished){
-			for (int i = 0; i < 8; i++) {
-				UIView *aBoxView = boxes[i];
+			for (int i = 0; i < BUTTON_COUNT; i++) {
+				UIView *aBoxView = buttons[i];
 				aBoxView.hidden = YES;
 			}
 		}];
-
 	} else {
-		[UIView animateWithDuration:1.0 animations:^{
-			for (int i = 0; i < 8; i++) {
-				UIView *aBoxView = boxes[i];
+		[UIView animateWithDuration:DURATION animations:^{
+			for (int i = 0; i < BUTTON_COUNT; i++) {
+				UIView *aBoxView = buttons[i];
 				double theta = M_PI / 4.0 * i;
-				CGRect rect = CGRectMake(1.5 * w * cos(theta),
-										 1.5 * w * sin(theta),
+				CGRect rect = CGRectMake(x + 1.5 * w * cos(theta),
+										 y + 1.5 * w * sin(theta),
 										 w, h);
-				aBoxView.frame = rect;
+				if (i != 8) aBoxView.frame = rect;
 				aBoxView.hidden = NO;
 			}
 		}];
 		selectingCommand = YES;
 	}
 }
+
+- (void)denominator
+{
+	
+}
+
+- (void)numerator
+{
+	
+}
+
+- (void)power
+{
+	
+}
+
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

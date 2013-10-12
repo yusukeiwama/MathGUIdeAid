@@ -16,3 +16,7 @@
 
 
 // 飯島、pullしました！
+
+
+// NSLayoutConstraint goes.
+// Recursive resizing from child box to parent box is required.

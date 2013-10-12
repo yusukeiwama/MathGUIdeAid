@@ -15,4 +15,10 @@
 @property CGFloat w;
 @property CGFloat h;
 
+@property id parentBox;
+
+@property UILabel *label;
+
+- (id)initWithFrame:(CGRect)frame delegate:(id)delegate;
+
 @end
